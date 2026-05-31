@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт за 0 рублей | Пошаговая инструкция для бизнеса</title>
+    <meta name="description" content="Создайте профессиональный сайт для своего бизнеса за 0 рублей, без программиста, за 1 день. Пошаговая инструкция от практика.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1a2e'/><text x='50' y='68' font-size='55' text-anchor='middle'>🚀</text></svg>" type="image/svg+xml">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        :root {
+            --bg: #0f0f1a;
+            --bg-light: #161628;
+            --card: rgba(255,255,255,0.04);
+            --card-border: rgba(255,255,255,0.08);
+            --glass: rgba(255,255,255,0.06);
+            --glass-border: rgba(255,255,255,0.12);
+            --accent-1: #7c3aed;
+            --accent-2: #06b6d4;
+            --accent-3: #f43f5e;
+            --gradient: linear-gradient(135deg, #7c3aed, #06b6d4);
+            --gradient-warm: linear-gradient(135deg, #f43f5e, #fb923c);
+            --gradient-soft: linear-gradient(135deg, #7c3aed 0%, #06b6d4 50%, #10b981 100%);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(124,58,237,0.15), transparent 70%);
+            top: -100px; right: -100px;
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(6,182,212,0.1), transparent 70%);
+            bottom: -50px; left: -100px;
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            color: var(--accent-2);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 44px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: var(--gradient);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(124,58,237,0.3); }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 32px;
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover { border-color: var(--accent-1); color: var(--accent-1); transform: translateY(-2px); }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 64px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat { text-align: center; }
+        .hero-stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-stat-label { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 100px 0; position: relative; }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+            text-align: center;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin: 0 auto 56px;
+            font-weight: 300;
+        }
+
+        /* ===== GLASS CARDS ===== */
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(124,58,237,0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(124,58,237,0.1);
+        }
+
+        /* ===== PAIN SECTION ===== */
+        .pain-section { background: var(--bg-light); }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .pain-card { text-align: center; }
+        .pain-emoji { font-size: 2.4rem; margin-bottom: 16px; }
+
+        .pain-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .pain-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-icon {
+            width: 56px; height: 56px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 16px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .fi-1 { background: rgba(124,58,237,0.15); }
+        .fi-2 { background: rgba(6,182,212,0.15); }
+        .fi-3 { background: rgba(244,63,94,0.15); }
+        .fi-4 { background: rgba(16,185,129,0.15); }
+        .fi-5 { background: rgba(251,146,60,0.15); }
+        .fi-6 { background: rgba(168,85,247,0.15); }
+
+        .glass-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .glass-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+        /* ===== STEPS ===== */
+        .steps-section { background: var(--bg-light); }
+
+        .steps-list { max-width: 680px; margin: 0 auto; }
+
+        .step-item {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 36px;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            min-width: 52px; height: 52px;
+            background: var(--gradient);
+            color: var(--white);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .step-item h3 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+        .step-item p { color: var(--muted); font-size: 0.92rem; }
+
+        /* ===== COMPARE ===== */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .compare-bad { border-top: 3px solid var(--accent-3); }
+        .compare-good { border-top: 3px solid #10b981; }
+
+        .compare-bad h3 { color: var(--accent-3); font-size: 1.1rem; margin-bottom: 20px; }
+        .compare-good h3 { color: #10b981; font-size: 1.1rem; margin-bottom: 20px; }
+
+        .compare-list { list-style: none; }
+        .compare-list li {
+            color: var(--muted); font-size: 0.9rem; margin-bottom: 12px;
+            padding-left: 26px; position: relative;
+        }
+        .compare-bad .compare-list li::before { content: '✗'; position: absolute; left: 0; color: var(--accent-3); font-weight: 700; }
+        .compare-good .compare-list li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 700; }
+
+        /* ===== AUDIENCE ===== */
+        .audience-section { background: var(--bg-light); }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .audience-card { text-align: center; }
+        .audience-card .feature-icon { margin: 0 auto 16px; }
+
+        /* ===== PRICING ===== */
+        .price-card {
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 56px 48px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--gradient);
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: var(--gradient-warm);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: 0.05em;
+        }
+
+        .price-old {
+            font-size: 1.1rem;
+            color: var(--muted);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .price-amount small { font-size: 1.2rem; font-weight: 400; color: var(--muted); }
+        .price-period { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; }
+
+        .price-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 36px;
+        }
+
+        .price-features li {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .price-card .btn-primary { width: 100%; justify-content: center; font-size: 1.1rem; padding: 20px; }
+
+        /* ===== GUARANTEE ===== */
+        .guarantee-block {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: var(--glass);
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 20px;
+            padding: 28px 32px;
+            max-width: 600px;
+            margin: 40px auto 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .guarantee-icon { font-size: 2.5rem; flex-shrink: 0; }
+        .guarantee-block h3 { color: #10b981; font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+        .guarantee-block p { color: var(--muted); font-size: 0.88rem; }
+
+        /* ===== FAQ ===== */
+        .faq-section { background: var(--bg-light); }
+        .faq-list { max-width: 680px; margin: 0 auto; }
+
+        .faq-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .faq-q {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .faq-q:hover { background: rgba(124,58,237,0.05); }
+
+        .faq-toggle {
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            background: var(--gradient);
+            border-color: transparent;
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .faq-item.active .faq-a { max-height: 300px; padding: 0 24px 20px; }
+        .faq-a p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at 50% 100%, rgba(124,58,237,0.1), transparent 60%);
+            pointer-events: none;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        footer a { color: var(--accent-2); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .pain-grid, .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .audience-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .hero p { font-size: 1.05rem; }
+            section { padding: 70px 0; }
+            .section-title { font-size: 1.9rem; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .price-card { padding: 40px 28px; }
+            .price-amount { font-size: 3rem; }
+            .guarantee-block { flex-direction: column; text-align: center; }
+            .hero-stats { gap: 32px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .pain-grid, .features-grid, .audience-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="container">
+            <div class="hero-badge">📘 Пошаговая инструкция · 2026</div>
+            <h1>Создайте <span class="gradient-text">профессиональный сайт</span> для бизнеса за 0 рублей</h1>
+            <p>Без программиста. Без конструкторов. Без ежемесячных платежей. Пошаговый гайд, по которому любой человек запустит сайт за 1 день.</p>
+            <div class="hero-buttons">
+                <a href="#price" class="btn-primary">Получить инструкцию →</a>
+                <a href="#how" class="btn-outline">Как это работает ↓</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num">0 руб.</div>
+                    <div class="hero-stat-label">стоимость хостинга</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">1 день</div>
+                    <div class="hero-stat-label">на создание</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num">0 строк</div>
+                    <div class="hero-stat-label">кода писать не нужно</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="pain-section">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Знакомо?</div>
+        <h2 class="section-title">Почему у вас до сих пор нет сайта</h2>
+        <p class="section-sub">Каждая из этих причин — миф. Эта инструкция их разрушает.</p>
+        <div class="pain-grid">
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">💸</div>
+                <h3>«Это дорого»</h3>
+                <p>Разработчик — от 500 руб. Конструктор — от 15 руб./мес. А можно — бесплатно. Навсегда.</p>
+            </div>
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">👩‍💻</div>
+                <h3>«Нужен программист»</h3>
+                <p>В 2026 году AI делает всю техническую работу. Вы просто описываете что хотите.</p>
+            </div>
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">⏰</div>
+                <h3>«Это долго»</h3>
+                <p>У разработчика — 2-4 недели ожидания. По этой инструкции — 1 день.</p>
+            </div>
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">🤯</div>
+                <h3>«Я не разбираюсь»</h3>
+                <p>Если умеете пользоваться мессенджером — справитесь. Каждый шаг расписан.</p>
+            </div>
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">📱</div>
+                <h3>«Конструкторы — отстой»</h3>
+                <p>Шаблонные, медленные, с рекламой. Ваш сайт будет уникальным — как от студии.</p>
+            </div>
+            <div class="glass-card pain-card fade-up">
+                <div class="pain-emoji">🔧</div>
+                <h3>«Сложно поддерживать»</h3>
+                <p>Обновить текст или фото — 2 минуты. Без программиста. Бесплатно.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section>
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Что внутри</div>
+        <h2 class="section-title">Полная система от А до Я</h2>
+        <p class="section-sub">Не просто «как сделать сайт», а весь путь — от идеи до первого клиента из Google</p>
+        <div class="features-grid">
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-1">🎨</div>
+                <h3>Создание сайта с AI</h3>
+                <p>Готовые промпты, список блоков, примеры. Описываете бизнес — получаете сайт.</p>
+            </div>
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-2">📱</div>
+                <h3>Заявки в Telegram</h3>
+                <p>Настройка бота за 5 минут — заявки приходят прямо в мессенджер.</p>
+            </div>
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-3">📄</div>
+                <h3>Юридические документы</h3>
+                <p>Шаблоны оферты и политики данных по законодательству РБ.</p>
+            </div>
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-4">🚀</div>
+                <h3>Бесплатный хостинг</h3>
+                <p>Cloudflare Pages — бесплатно, надёжно, быстро. Без ежемесячных платежей.</p>
+            </div>
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-5">🔍</div>
+                <h3>Google + Яндекс</h3>
+                <p>Регистрация в поисковиках пошагово. Клиенты найдут вас сами.</p>
+            </div>
+            <div class="glass-card fade-up">
+                <div class="feature-icon fi-6">✅</div>
+                <h3>Чек-лист 28 пунктов</h3>
+                <p>Проверьте всё перед запуском. Ничего не упустите.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STEPS ===== -->
+<section class="steps-section" id="how">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Процесс</div>
+        <h2 class="section-title">5 шагов до готового сайта</h2>
+        <p class="section-sub">Следуйте инструкции — результат гарантирован</p>
+        <div class="steps-list">
+            <div class="step-item fade-up">
+                <div class="step-num">1</div>
+                <div><h3>Подготовьте материалы</h3><p>Тексты, фото, цены. Чек-лист что собрать — внутри инструкции.</p></div>
+            </div>
+            <div class="step-item fade-up">
+                <div class="step-num">2</div>
+                <div><h3>Создайте сайт с помощью AI</h3><p>Откройте Arena.ai, опишите бизнес — AI создаст уникальный дизайн. Готовые промпты прилагаются.</p></div>
+            </div>
+            <div class="step-item fade-up">
+                <div class="step-num">3</div>
+                <div><h3>Подключите Telegram-бота</h3><p>5 минут — и заявки с сайта приходят прямо в мессенджер.</p></div>
+            </div>
+            <div class="step-item fade-up">
+                <div class="step-num">4</div>
+                <div><h3>Разместите в интернете</h3><p>GitHub + Cloudflare = бесплатный хостинг. Всё расписано пошагово.</p></div>
+            </div>
+            <div class="step-item fade-up">
+                <div class="step-num">5</div>
+                <div><h3>Зарегистрируйте в поисковиках</h3><p>Google + Яндекс — бесплатно. Через 2 недели вас найдут в поиске.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section>
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Выгода</div>
+        <h2 class="section-title">Экономия от 500 рублей</h2>
+        <p class="section-sub">Сравните сами</p>
+        <div class="compare-grid">
+            <div class="glass-card compare-bad fade-up">
+                <h3>❌ Обычный путь</h3>
+                <ul class="compare-list">
+                    <li>Разработчик: 500-3000 руб.</li>
+                    <li>Конструктор: 15-40 руб./мес</li>
+                    <li>Шаблонный дизайн</li>
+                    <li>Ожидание 2-4 недели</li>
+                    <li>Зависимость от исполнителя</li>
+                    <li>Платить за каждую правку</li>
+                </ul>
+            </div>
+            <div class="glass-card compare-good fade-up">
+                <h3>✅ По инструкции</h3>
+                <ul class="compare-list">
+                    <li>Хостинг: 0 руб. навсегда</li>
+                    <li>Уникальный дизайн от AI</li>
+                    <li>Готово за 1 день</li>
+                    <li>Полная независимость</li>
+                    <li>Правки за 2 минуты — бесплатно</li>
+                    <li>Документы и SEO включены</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== AUDIENCE ===== -->
+<section class="audience-section">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Для кого</div>
+        <h2 class="section-title">Подойдёт каждому, кому нужен сайт</h2>
+        <p class="section-sub">Любая ниша, любой уровень подготовки</p>
+        <div class="audience-grid">
+            <div class="glass-card audience-card fade-up">
+                <div class="feature-icon fi-1" style="font-size:1.8rem;">🔮</div>
+                <h3>Эксперты</h3>
+                <p>Психологи, коучи, тарологи, нутрициологи, стилисты</p>
+            </div>
+            <div class="glass-card audience-card fade-up">
+                <div class="feature-icon fi-2" style="font-size:1.8rem;">💼</div>
+                <h3>Фрилансеры</h3>
+                <p>Дизайнеры, копирайтеры, фотографы, SMM</p>
+            </div>
+            <div class="glass-card audience-card fade-up">
+                <div class="feature-icon fi-4" style="font-size:1.8rem;">🏪</div>
+                <h3>Малый бизнес</h3>
+                <p>ИП, самозанятые, мастера, кондитеры</p>
+            </div>
+            <div class="glass-card audience-card fade-up">
+                <div class="feature-icon fi-3" style="font-size:1.8rem;">🚀</div>
+                <h3>Стартапы</h3>
+                <p>MVP, тест идеи, лендинг без бюджета</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="price">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Стоимость</div>
+        <h2 class="section-title">Одна покупка — навсегда</h2>
+        <p class="section-sub">Никаких подписок. Купили — пользуетесь всю жизнь.</p>
+        <div class="price-card fade-up">
+            <div class="price-badge">🔥 ВЫГОДНЕЕ В 20 РАЗ</div>
+            <p class="price-old">Разработчик: от 500 руб.</p>
+            <div class="price-amount">29 <small>бел. руб.</small></div>
+            <p class="price-period">Одноразовый платёж. Обновления бесплатно.</p>
+            <ul class="price-features">
+                <li>HTML-инструкция (красивая, в браузере)</li>
+                <li>PDF-версия для печати</li>
+                <li>Готовые промпты для AI</li>
+                <li>Шаблоны юридических документов (РБ)</li>
+                <li>Чек-лист из 28 пунктов</li>
+                <li>Все ссылки на бесплатные сервисы</li>
+                <li>Бесплатные обновления инструкции</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Купить инструкцию за 29 руб. →</a>
+        </div>
+
+        <div class="guarantee-block fade-up">
+            <div class="guarantee-icon">🛡️</div>
+            <div>
+                <h3>Гарантия 14 дней</h3>
+                <p>Если инструкция не подойдёт — верну деньги без вопросов и условий.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-label" style="text-align:center;">Вопросы</div>
+        <h2 class="section-title">Частые вопросы</h2>
+        <div class="faq-list" style="margin-top: 48px;">
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Мне правда не нужен программист?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>Правда. Всю техническую работу делает AI. Вы описываете бизнес словами — получаете готовый сайт. Если умеете пользоваться Telegram — справитесь.</p></div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Это точно бесплатный хостинг? Без подвоха?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>Да. Cloudflare — компания стоимостью $30 млрд. Бесплатный тариф включает безлимитный трафик, SSL, CDN и защиту от атак. Им пользуются миллионы сайтов по всему миру.</p></div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Какой сайт получится? Не шаблонный?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>AI создаёт уникальный дизайн под ваш бизнес. Это не конструктор с шаблонами, а полноценный сайт — с анимациями, адаптивностью для мобильных, SEO-настройками.</p></div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Можно будет менять сайт самостоятельно?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>Да! Изменить текст, цену, фото — 2 минуты через GitHub. Для серьёзных правок — снова заходите в AI и описываете что изменить. Всё в инструкции.</p></div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Подходит для Беларуси?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>Да! Включены шаблоны юридических документов по законодательству РБ — оферта и политика персональных данных для плательщиков НПД, ИП и юрлиц.</p></div>
+            </div>
+            <div class="faq-item fade-up">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                    <span>Сколько времени займёт?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-a"><p>Если материалы готовы (тексты, фото) — от 3 до 8 часов. Можно разбить на 2 дня. Самое долгое — подготовить контент, техническая часть делается быстро.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+    <div class="container" style="position:relative; z-index:1;">
+        <div class="section-label">Начать</div>
+        <h2 class="section-title">Готовы создать свой сайт?</h2>
+        <p class="section-sub">Напишите мне — отправлю инструкцию сразу после оплаты</p>
+        <div class="hero-buttons">
+            <a href="https://t.me/gorislavka" class="btn-primary" target="_blank">✈️ Написать в Telegram</a>
+            <a href="https://instagram.com/biznes_i_taro" class="btn-outline" target="_blank">📸 Instagram</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Марина Гориславка · <a href="https://t.me/gorislavka">Telegram</a> · <a href="https://instagram.com/biznes_i_taro">Instagram</a></p>
+    </div>
+</footer>
+
+<script>
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
