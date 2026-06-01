@@ -560,9 +560,108 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* ===== ANIMATED ORBS BACKGROUND ===== */
+        .orbs-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.12;
+            animation: orbFloat linear infinite;
+        }
+
+        .orb-1 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, #7c3aed, transparent 70%);
+            top: 10%; left: -5%;
+            animation-duration: 25s;
+        }
+
+        .orb-2 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, #06b6d4, transparent 70%);
+            top: 30%; right: -8%;
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, #f43f5e, transparent 70%);
+            top: 55%; left: 10%;
+            animation-duration: 22s;
+            animation-delay: -10s;
+        }
+
+        .orb-4 {
+            width: 450px; height: 450px;
+            background: radial-gradient(circle, #10b981, transparent 70%);
+            top: 75%; right: 5%;
+            animation-duration: 28s;
+            animation-delay: -15s;
+        }
+
+        .orb-5 {
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, #fb923c, transparent 70%);
+            top: 45%; left: 50%;
+            animation-duration: 20s;
+            animation-delay: -8s;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(60px, -80px) scale(1.15);
+            }
+            50% {
+                transform: translate(-40px, -150px) scale(0.9);
+            }
+            75% {
+                transform: translate(80px, -60px) scale(1.1);
+            }
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        /* Ensure content stays above orbs */
+        .hero, section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Parallax orbs on scroll */
+        .orbs-container.parallax .orb {
+            transition: transform 0.1s linear;
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Animated orbs background -->
+    <div class="orbs-container" id="orbsContainer">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+    </div>
+
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -886,8 +985,21 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Orbs parallax on scroll
+    window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const orbs = document.querySelectorAll('.orb');
+        const speeds = [0.03, -0.02, 0.04, -0.03, 0.025];
+        
+        orbs.forEach((orb, i) => {
+            const speed = speeds[i] || 0.02;
+            orb.style.transform = `translateY(${scrollY * speed}px)`;
+        });
+    });
+
 </script>
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a04fedec5d35eeae',t:'MTc4MDMzNDg0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
