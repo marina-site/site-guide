@@ -38,6 +38,20 @@
             overflow-x: hidden;
         }
 
+        /* Fixed background image */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bg2.jpg') center/cover no-repeat fixed;
+            opacity: 0.2;
+            z-index: -1;
+            pointer-events: none;
+        }
+
         .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
 
         /* ===== HERO ===== */
@@ -50,6 +64,7 @@
             padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
+            background: rgba(15, 15, 26, 0.55);
         }
 
         .hero::before {
@@ -222,12 +237,12 @@
 
         /* ===== GLASS CARDS ===== */
         .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            background: rgba(15, 15, 26, 0.7);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
             padding: 32px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transition: all 0.4s ease;
         }
 
@@ -284,7 +299,7 @@
         .glass-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
 
         /* ===== STEPS ===== */
-        .steps-section { background: var(--bg-light); }
+        .steps-section { background: rgba(22, 22, 40, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
         .steps-list { max-width: 680px; margin: 0 auto; }
 
@@ -334,7 +349,7 @@
         .compare-good .compare-list li::before { content: '✓'; position: absolute; left: 0; color: #10b981; font-weight: 700; }
 
         /* ===== AUDIENCE ===== */
-        .audience-section { background: var(--bg-light); }
+        .audience-section { background: rgba(22, 22, 40, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
         .audience-grid {
             display: grid;
@@ -350,13 +365,14 @@
             max-width: 520px;
             margin: 0 auto;
             text-align: center;
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            background: rgba(15, 15, 26, 0.8);
+            border: 1px solid rgba(255,255,255,0.12);
             border-radius: 28px;
             padding: 56px 48px;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(16px);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
         }
 
         .price-card::before {
@@ -427,13 +443,14 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            background: var(--glass);
+            background: rgba(15, 15, 26, 0.7);
             border: 1px solid rgba(16,185,129,0.2);
             border-radius: 20px;
             padding: 28px 32px;
             max-width: 600px;
             margin: 40px auto 0;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .guarantee-icon { font-size: 2.5rem; flex-shrink: 0; }
@@ -441,16 +458,17 @@
         .guarantee-block p { color: var(--muted); font-size: 0.88rem; }
 
         /* ===== FAQ ===== */
-        .faq-section { background: var(--bg-light); }
+        .faq-section { background: rgba(22, 22, 40, 0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
         .faq-list { max-width: 680px; margin: 0 auto; }
 
         .faq-item {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
+            background: rgba(15, 15, 26, 0.65);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 16px;
             margin-bottom: 12px;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         .faq-q {
@@ -516,6 +534,9 @@
             color: var(--muted);
             font-size: 0.85rem;
             border-top: 1px solid var(--glass-border);
+            background: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         footer a { color: var(--accent-2); text-decoration: none; }
@@ -577,7 +598,7 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.12;
+            opacity: 0.08;
             animation: orbFloat linear infinite;
         }
 
@@ -1000,6 +1021,6 @@
 
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a04fedec5d35eeae',t:'MTc4MDMzNDg0OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a05048e2f8343232',t:'MTc4MDMzODU3NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
